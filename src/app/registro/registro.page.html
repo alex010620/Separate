@@ -1,0 +1,80 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title> Registrar </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div style="padding: 7px;">
+    <form [formGroup]="ionicForm" (ngSubmit)="onSubmit()" novalidate>
+      <ion-list>
+        <ion-item>
+          <ion-label for="name" position="floating">Nombre: </ion-label>
+          <ion-input id="name" type="text" formControlName="Nombre" required></ion-input>
+        </ion-item>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.nombre.errors?.required">
+          El nombre del negocio es requerido...
+        </span>
+        <ion-item>
+          <ion-label for="name" position="floating">Tipo: </ion-label>
+          <ion-input id="tipo" type="text" formControlName="Tipo" required></ion-input>
+        </ion-item>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.tipo.errors?.required">
+          El nombre del negocio es requerido...
+        </span>
+        <ion-item>
+          <ion-label for="name" position="floating">Telefono: </ion-label>
+          <ion-input id="telefono" type="text" formControlName="Telefono" required></ion-input>
+        </ion-item>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.telefono.errors?.required">
+          El nombre del negocio es requerido...
+        </span>
+        <ion-item>
+          <ion-label for="name" position="floating">Direccion: </ion-label>
+          <ion-input id="direccion" type="text" formControlName="Direccion" required></ion-input>
+        </ion-item>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.direccion.errors?.required">
+          El nombre del negocio es requerido...
+        </span>
+        <div class="div">
+          <ion-label class="ml-3" for="name">Foto: </ion-label>
+          <div class="row">
+            <div class="col">
+                <ion-button expand="block" color="success" (click)="takePicture()">Tirar <ion-icon name="camera" icon-right></ion-icon></ion-button>
+            </div>
+            <div class="col">
+                <ion-button expand="block" color="success" (click)="loadPicture()">Subir <ion-icon name="image" icon-right></ion-icon></ion-button>
+            </div>
+          </div>
+        </div>
+        <ion-input [(ngModel)]="base64Image" hidden formControlName="Foto"></ion-input>
+        <ion-card style="height: 300px;" *ngIf="base64Image">
+          <ion-img src="{{base64Image}}"></ion-img>
+        </ion-card>
+        <ion-item>
+          <ion-label for="descripcion" position="floating">Descripcion: </ion-label>
+          <ion-textarea id="descripcion" type="text" formControlName="Descripcion" required></ion-textarea>
+        </ion-item>
+        <ion-item>
+
+          <ion-label for="name" position="floating">Latitud: </ion-label>
+          <ion-input id="latitud" type="text" formControlName="Latitud" required></ion-input>
+        </ion-item>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.latitud.errors?.required">
+          El nombre del negocio es requerido...
+        </span>
+        <ion-item>
+          <ion-label for="name" position="floating">Longitud: </ion-label>
+          <ion-input id="longitud" type="text" formControlName="Longitud" required></ion-input>
+        </ion-item>
+        <span class="error ion-padding" *ngIf="isSubmitted && errorControl.longitud.errors?.required">
+          El nombre del negocio es requerido...
+        </span>
+          <ion-button style="width: 98%; margin-top: 10%;" type="submit">Guardar negocio</ion-button>
+      </ion-list>
+    </form>
+  </div>
+</ion-content>

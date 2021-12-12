@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons (click)="dismiss()" routerLinkActive="router-link-active" slot="start">
+      <ion-icon name="arrow-back" style="font-size: 25px;"></ion-icon>
+    </ion-buttons>
+    <ion-title> {{negocio.Nombre}} </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card  class="border-top border-primary">
+     <div class="card info">
+    <div class="div1">
+      <a (click)="dismiss()" [routerLink]="['/edit-negocios',negocio.IdNegocio]" style="font-size: 40px;" class="text-success float-right mr-3 mt-2"><b><ion-icon name="create"></ion-icon></b></a>
+    </div>
+    <div class="div2 rounded-circle">
+      <img class="rounded-circle" src="{{negocio.Foto}}" style="height: 100%; width: 100%;" alt="">
+    </div>
+    <div class="div3">
+      <h5 class="mb-0 mt-1"><b>{{negocio.Nombre}}</b></h5>
+      <label for="">{{negocio.Tipo}}</label>
+
+    </div>
+  </div>
+  </ion-card>
+  <ion-card style="border-top: 3px solid;" class="p-2 border-top border-primary">
+    <h6>Direccion</h6>
+    <p>{{negocio.Direccion}}</p>
+  </ion-card>
+  <ion-card style="border-top: 3px solid;" class="p-2 border-top border-primary">
+    <h6>Telefono</h6>
+    <p>{{negocio.Telefono}}</p>
+  </ion-card>
+  <ion-card style="border-top: 3px solid;" class="p-2 border-top border-primary">
+    <h6>Descripcion</h6>
+    <p>{{negocio.Descripcion}}</p>
+  </ion-card>
+  <ion-card style="border-top: 3px solid;" class="p-2 border-top border-primary" id="map" style="height: 100vh;">
+    <h6>Ubicacion</h6>
+  </ion-card>
+
+</ion-content>

@@ -1,0 +1,39 @@
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons routerLinkActive="router-link-active" slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title> Inicio </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-card style="height: 250px;">
+  <ion-img src="../../assets/statistics.png"></ion-img>
+  </ion-card>
+  <ion-label class="pl-3 text-primary">Negocios</ion-label>
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+  <div *ngIf="!negocios" class="col align-items-center">
+    <ion-spinner style="font-size: 30px;" class="d-block text-center m-auto text-primary"></ion-spinner>
+  </div>
+  <div class="alert alert-danger m-2" *ngIf="verificacion === false">
+    No hay negocios registrados...
+  </div>
+  <ion-card *ngFor="let item of negocios | filtro: buscador" class="mb-2 border-top border-primary">
+    <ion-item>
+      <ion-avatar style="margin-right: 5px;">
+        <img src="{{item.Foto}}" />
+      </ion-avatar>
+      <ion-label class="text-primary" >{{item.Nombre}}</ion-label>
+      <ion-button fill="outline" (click)="presentModal(item)" slot="end">View</ion-button>
+      <ion-button style="color: red;" fill="outline" (click)="presentAlertConfirm(item.IdNegocio)" slot="end">X</ion-button>
+    </ion-item>
+    <ion-card-content>
+      {{item.Descripcion}}
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
